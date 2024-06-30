@@ -7,7 +7,8 @@ COPY front /app
 WORKDIR /app
 
 FROM front-base AS front-build
-RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install 
+#--frozen-lockfile
 RUN pnpm run build
 
 FROM nginx:1.21.0-alpine
